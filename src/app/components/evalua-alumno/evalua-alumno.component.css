@@ -1,0 +1,21 @@
+.item:hover{
+  transition:all .2s ease-in-out;
+  background-color: white;
+  -webkit-box-shadow: 1px 1px 35px -7px rgba(0,0,0,0.75);
+  -moz-box-shadow: 1px 1px 35px -7px rgba(0,0,0,0.75);
+  box-shadow: 1px 1px 35px -7px rgba(0,0,0,0.75);
+  padding: 15px;
+  margin-bottom: 2%;
+}
+.etiqueta{
+
+  font-weight: bold;
+}
+.tabla{
+  background-color: white;
+  -webkit-box-shadow: 1px 1px 35px -7px rgba(0,0,0,0.75);
+  -moz-box-shadow: 1px 1px 35px -7px rgba(0,0,0,0.75);
+  box-shadow: 1px 1px 35px -7px rgba(0,0,0,0.75);
+  padding: 15px;
+  margin-bottom: 2%;
+}

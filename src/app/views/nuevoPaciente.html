@@ -1,0 +1,147 @@
+<app-header></app-header>
+
+<div class="container-fluid text-center barnav">
+  <ul class="nav nav-pills nav-justified">
+    <li role="presentation"><a [routerLink]="['/cursos']" >Mis Cursos</a></li>
+    <li role="presentation"><a [routerLink]="['/agenda']">Mi Agenda</a></li>
+    <li role="presentation" class="active"><a [routerLink]="['/pacientes']">Mis Pacientes</a></li>
+  </ul>
+</div>
+<hr>
+
+<div class="container ">
+  <h3>{{titulo}}</h3>
+  <div class="panel panel-primary">
+    <form class="form-horizontal" #formNuevoPaciente ="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="nombre" class="col-sm-2 control-label">Nombre</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="nombre" name="nombre" #nombrePaciente="ngModel" [(ngModel)]="paciente.nombre" placeholder="Nombre" required />
+            <span class="text-danger" *ngIf="nombrePaciente.touched && !nombrePaciente.valid">El campo es obligatorio </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="apellido" class="col-sm-2 control-label">Apellido</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="apellido" name="apellido" #apellidosPaciente="ngModel" [(ngModel)]="paciente.apellidos" placeholder="Apellidos" required />
+            <span class="text-danger" *ngIf="apellidosPaciente.touched && !apellidosPaciente.valid">El campo es obligatorio </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="ocupacion" class="col-sm-2 control-label">Ocupacion</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="ocupacion" id="ocupacion" #ocupacion="ngModel" [(ngModel)]="paciente.ocupacion" placeholder="Ocupacion" required />
+            <span class="text-danger" *ngIf="ocupacion.touched && !ocupacion.valid">Introduce un dato valido. </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="edad" class="col-sm-2 control-label">Edad</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" id="edad" name="edad" #edad="ngModel" [(ngModel)]="paciente.edad" required />
+            <span class="text-danger" *ngIf="edad.touched && !edad.valid">El campo es obligatorio </span>
+          </div>
+        </div>
+        <div class="panel panel-info " *ngIf="paciente.edad&&paciente.edad<18">
+          <div class="panel-heading">
+            Datos de Tutor
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label for="nombretutor" class="col-sm-2 control-label">Nombre</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="nombretutor" id="nombretutor" #nombretutor="ngModel" [(ngModel)]="paciente.datos_tutor.nombre" placeholder="Nombre del tutor" required />
+                <span class="text-danger" *ngIf="nombretutor.touched && !nombretutor.valid">Introduce un dato valido. </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="apellidostutor" class="col-sm-2 control-label">Apellidos</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="apellidostutor" id="apellidostutor" #apellidostutor="ngModel" [(ngModel)]="paciente.datos_tutor.apellidos" placeholder="Apellidos del tutor" required />
+                <span class="text-danger" *ngIf="apellidostutor.touched && !apellidostutor.valid">Introduce un dato valido. </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label  class="col-sm-2 control-label">Sexo</label>
+              <div class="col-sm-10">
+                <label class="radio-inline">
+                  <input type="radio" [(ngModel)]="paciente.datos_tutor.sexo" name="sexotutor" id="sexotutor" value="hombre"> Hombre
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" [(ngModel)]="paciente.datos_tutor.sexo" name="sexotutor" id="sexotutor" value="mujer"> Mujer
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="telefonotutor" class="col-sm-2 control-label">Telefono</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="telefoTutor" id="telefonoTutor" #telefonotutor="ngModel" [(ngModel)]="paciente.datos_tutor.telefono" placeholder="Telefono de Contacto" required />
+                <span class="text-danger" *ngIf="telefonotutor.touched && !telefonotutor.valid">Introduce un dato valido. </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="direccion" class="col-sm-2 control-label">direccion</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="direccion" name="direccion" #direccion="ngModel" [(ngModel)]="paciente.direccion" required />
+            <span class="text-danger" *ngIf="direccion.touched && !direccion.valid">El campo es obligatorio </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="telefono" class="col-sm-2 control-label">Telefono</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="telefono" name="telefono" #telefono="ngModel" [(ngModel)]="paciente.telefono" required />
+            <span class="text-danger" *ngIf="telefono.touched && !telefono.valid">El campo es obligatorio </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label  class="col-sm-2 control-label">Sexo</label>
+          <div class="col-sm-10">
+            <label class="radio-inline">
+              <input type="radio" [(ngModel)]="paciente.sexo" name="sexo" id="inlineRadio1" value="hombre"> Hombre
+            </label>
+            <label class="radio-inline">
+              <input type="radio" [(ngModel)]="paciente.sexo" name="sexo" id="inlineRadio2" value="mujer"> Mujer
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="app" class="col-sm-2 control-label">APP</label>
+          <div class="col-sm-10">
+            <textarea name="app" class="form-control" id="app" [(ngModel)]="paciente.app" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ahf" class="col-sm-2 control-label">AHF</label>
+          <div class="col-sm-10">
+            <textarea name="ahf" class="form-control" id="ahf" [(ngModel)]="paciente.ahf" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ef" class="col-sm-2 control-label">EF</label>
+          <div class="col-sm-10">
+            <textarea name="ef" class="form-control" id="ef" [(ngModel)]="paciente.ef" rows="3"></textarea>
+          </div>
+        </div>
+
+      </div>
+      <div class="panel-footer">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+          <div class="btn-group" role="group">
+            <button type="button" [routerLink]="['/pacientes']" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span> Atrás</button>
+          </div>
+          <div class="btn-group" role="group">
+            <input type="submit" [disabled]="formNuevoPaciente.invalid" class="btn btn-primary" value="Registrar">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <pre>{{paciente|json}}</pre>
+</div>

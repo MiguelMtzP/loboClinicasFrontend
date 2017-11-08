@@ -1,0 +1,35 @@
+<app-header></app-header>
+
+
+<div class="container-fluid text-center barnav">
+  <ul class="nav nav-pills nav-justified">
+    <li role="presentation" ><a [routerLink]="['/cursos']" >Mis Cursos</a></li>
+    <li role="presentation" class="active"><a [routerLink]="['/agenda']">Mi Agenda</a></li>
+    <li role="presentation"><a [routerLink]="['/pacientes']">Mis Pacientes</a></li>
+  </ul>
+</div>
+<br>
+<div class="container ">
+  <div class="row">
+    <h2 class="col-md-9">Mi Agenda</h2>
+    <div class="col-md-3">
+      <button type="button" class="btn btn-block btn-primary " name="button" [routerLink]="['/nuevaCita']"><span class="glyphicon glyphicon-calendar"></span> Agendar Cita</button>
+    </div>
+  </div>
+  <div class="alert alert-info"  *ngIf="barraEstado" role="alert">
+    <span class="text-primary"><strong>Aviso </strong> {{barraEstado}}</span>
+  </div>
+  <br>
+  <div class="row item" *ngFor="let cita  of citas">
+    <div class="col-md-1">
+      <img src="../../assets/annual.svg" class="img-responsive" alt="">
+    </div>
+    <h3 class="col-md-11"><a [routerLink]="['/detalleCita',cita._id]">
+      {{cita.fecha_hora|date:"mediumDate"}} <br><small>{{cita.id_paciente.nombre}} {{cita.id_paciente.apellidos}}, {{cita.id_paciente.edad}} años
+        <br>
+        {{cita.asunto}}
+      </small>
+      </a>
+    </h3>
+  </div>
+</div>

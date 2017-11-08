@@ -1,0 +1,42 @@
+<app-header></app-header>
+
+
+<div class="container-fluid text-center barnav">
+  <ul class="nav nav-pills nav-justified">
+    <li role="presentation"  class="active"><a [routerLink]="['/cursos']" >Mis Cursos</a></li>
+    <li role="presentation"><a [routerLink]="['/agenda']">Mi Agenda</a></li>
+    <li role="presentation"><a [routerLink]="['/pacientes']">Mis Pacientes</a></li>
+  </ul>
+</div>
+<br>
+<div class="container ">
+  <div class="row">
+    <h2 class="col-md-9">Mis Cursos inscritos</h2>
+
+  </div>
+  <div class="alert alert-info"  *ngIf="barraMisCursos" role="alert">
+    <span class="text-primary"><strong>Aviso </strong> {{barraMisCursos}}</span>
+  </div>
+  <br>
+  <div class="row item" *ngFor="let curso of misCursos">
+    <div class="col-md-1">
+      <img src="../../assets/lecture.svg" class="img-responsive" alt="">
+    </div>
+    <h3 class="col-md-11"><a [routerLink]="['/detalleCurso',curso.id_curso._id]">  {{curso.id_curso.nombre}} <small>{{curso.id_curso.id_profesor.nombre}} {{curso.id_curso.id_profesor.apellidos}}</small> </a></h3>
+  </div>
+
+  <div class="row">
+    <h2 class="col-md-9">Todos los Cursos</h2>
+
+  </div>
+  <div class="alert alert-info"  *ngIf="barraCursos" role="alert">
+    <span class="text-primary"><strong>Aviso </strong> {{barraCursos}}</span>
+  </div>
+  <br>
+  <div class="row item" *ngFor="let curso of cursos">
+    <div class="col-md-1">
+      <img src="../../assets/lecture.svg" class="img-responsive" alt="">
+    </div>
+    <h3 class="col-md-11" ><a [routerLink]="['/detalleCurso',curso._id]">  {{curso.nombre}} <small> {{curso.id_clinica.nombre}}</small></a></h3>
+  </div>
+</div>

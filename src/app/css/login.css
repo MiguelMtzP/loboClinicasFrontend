@@ -1,0 +1,21 @@
+
+#login{
+
+  background-color: #00b5e2;
+  height: 320px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+
+  margin-top: -160px;   /* height/2 = 500px / 2 */
+}
+#contenedor {
+  height : 100%;
+  width : 300px;
+  margin: auto;
+  padding-top: 20px;
+}
+
+h2 {
+  color: white;
+}

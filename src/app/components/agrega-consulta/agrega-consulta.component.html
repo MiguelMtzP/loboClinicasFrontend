@@ -1,0 +1,89 @@
+<app-header></app-header>
+
+<div class="container-fluid text-center barnav">
+  <ul class="nav nav-pills nav-justified">
+    <li role="presentation"><a [routerLink]="['/cursos']" >Mis Cursos</a></li>
+    <li role="presentation"><a [routerLink]="['/agenda']">Mi Agenda</a></li>
+    <li role="presentation" class="active"><a [routerLink]="['/pacientes']">Mis Pacientes</a></li>
+  </ul>
+</div>
+<hr>
+
+<div class="container ">
+  <h3>Nueva Consulta</h3>
+  <div class="panel panel-primary">
+    <form class="form-horizontal" #formConsulta ="ngForm" (ngSubmit)="onSubmit()">
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="fecha" class="col-sm-2 control-label">Fecha</label>
+          <div class="col-sm-10">
+            <input type="date" class="form-control" id="fecha" name="fecha" #fecha="ngModel" [(ngModel)]="consulta.fecha" required/>
+            <span class="text-danger" *ngIf="fecha.touched && !fecha.valid">El campo es obligatorio </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="curso" class="col-sm-2 control-label">Curso</label>
+          <div class="col-sm-10">
+            <select class="form-control" (change)="changeTratamientos(curso.value)" name="curso" id="curso" #curso="ngModel" [(ngModel)]="consulta.id_cursoAlumno" required>
+              <option value="">Selecciona un Curso</option>
+              <option *ngFor="let curso of cursos;let i = index" [value]="curso._id"> {{curso.id_curso.nombre}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group" *ngIf="tratamientos">
+          <label for="tratamiento" class="col-sm-2 control-label">Tratamiento 1</label>
+          <div class="col-sm-10">
+            <select class="form-control" (change)="asignaNombreTrat($event,0)" name="tratamiento1" id="tratamiento1" #tratamiento1="ngModel" [(ngModel)]="consulta.tratamientos[0].id_tratamiento" required>
+              <option value="">Selecciona un Tratamiento</option>
+              <option *ngFor="let tipoTratamiento of tratamientos"  [value]="tipoTratamiento.id_tratamiento._id">{{tipoTratamiento.id_tratamiento.nombre}}</option>
+            </select>
+          </div>
+        </div>
+        <div class=""  *ngFor="let t of consulta.tratamientos; index as i; first as isFirst">
+          <div class="form-group" *ngIf="tratamientos&&!isFirst">
+            <label for="tratamiento" class="col-sm-2 control-label">Tratamiento {{i+1}}</label>
+            <div class="col-sm-9">
+              <select class="form-control" name="tratamiento{{i+1}}" (change)="asignaNombreTrat($event,i)" id="tratamiento{{i+1}}" [(ngModel)]="consulta.tratamientos[i].id_tratamiento"  required>
+                <option value="">Selecciona un Tratamiento</option>
+                <option *ngFor="let tipoTratamiento of tratamientos" [value]="tipoTratamiento.id_tratamiento._id">{{tipoTratamiento.id_tratamiento.nombre}}</option>
+              </select>
+            </div>
+            <div class="col-sm-1 text-left ">
+              <button type="button" name="button" (click)="removeTratamiento(i)" class=" btn btn-link"><span class="glyphicon glyphicon-trash"></span></button>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label"></label>
+          <div class="col-ms-10">
+            <button type="button" *ngIf="tratamientos" name="button" (click)="agregaTratamiento()" class="btn btn-link btn-sm">Agregar tratamiento...</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="ef" class="col-sm-2 control-label">EF</label>
+          <div class="col-sm-10">
+            <textarea name="ef" class="form-control" id="ef" [(ngModel)]="consulta.ef" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="obs" class="col-sm-2 control-label">Observaciones</label>
+          <div class="col-sm-10">
+            <textarea name="observaciones" class="form-control" id="obs" [(ngModel)]="consulta.observaciones" rows="3"></textarea>
+          </div>
+        </div>
+
+      </div>
+      <div class="panel-footer">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+          <div class="btn-group" role="group">
+            <button type="button" [routerLink]="['/paciente',id_paciente]" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span> Atrás</button>
+          </div>
+          <div class="btn-group" role="group">
+            <input type="submit" [disabled]="formConsulta.invalid" class="btn btn-primary" value="Registrar">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <pre>{{consulta|json}}</pre>
+</div>

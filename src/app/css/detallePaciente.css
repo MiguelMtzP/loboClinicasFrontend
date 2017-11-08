@@ -1,0 +1,13 @@
+.barnav{
+}
+.body{
+  background-color: #00b5e2;
+}
+.item{
+  background-color: white;
+  -webkit-box-shadow: 1px 1px 35px -7px rgba(0,0,0,0.75);
+  -moz-box-shadow: 1px 1px 35px -7px rgba(0,0,0,0.75);
+  box-shadow: 1px 1px 35px -7px rgba(0,0,0,0.75);
+  padding: 15px;
+  margin-bottom: 2%;
+}

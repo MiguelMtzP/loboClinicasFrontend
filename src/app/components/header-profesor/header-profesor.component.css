@@ -1,0 +1,11 @@
+.header{
+  /*background-color:  #00b5e2;*/
+  background-color: #263569;
+  color: white;
+  padding: 20px 0px ;
+}
+.perfil:hover {
+  transition:all .2s ease-in-out;
+  filter: opacity(.5) sepia(70%);
+  border-style: inset;
+}

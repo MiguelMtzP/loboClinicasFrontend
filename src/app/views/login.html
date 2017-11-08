@@ -1,0 +1,33 @@
+
+    <div class="row">
+      <div id="login">
+        <div id="contenedor">
+
+            <img class="img-responsive centrado" src="../../assets/logo.png" alt="">
+
+          <br>
+          <form #formlogin ="ngForm" (ngSubmit)="login()" >
+          <div class="form-group">
+            <input type="text" class="form-control" name="usr" #matricula="ngModel" [(ngModel)]="usr" placeholder="Matricula">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" name="pass" #contra="ngModel" [(ngModel)]="pass" placeholder="contraseña">
+          </div>
+          <div class="form-group">
+          </div>
+          <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+              <button type="button" [routerLink]="['/registro-alumno']" class="btn   btn-block btn-default">Registrarse</button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="submit" class="btn btn-primary btn-block">Acceder</button>
+            </div>
+          </div>
+        </form><br>
+        <button type="submit" class="btn btn-link btn-block" [routerLink]="['/profesor']">
+          <span class="glyphicon glyphicon-book"></span>
+           Soy Maestro
+        </button>
+        </div>
+      </div>
+    </div>

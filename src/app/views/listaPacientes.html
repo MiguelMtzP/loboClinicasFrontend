@@ -1,0 +1,29 @@
+<app-header></app-header>
+
+
+<div class="container-fluid text-center barnav">
+  <ul class="nav nav-pills nav-justified">
+    <li role="presentation"><a [routerLink]="['/cursos']" >Mis Cursos</a></li>
+    <li role="presentation"><a [routerLink]="['/agenda']">Mi Agenda</a></li>
+    <li role="presentation" class="active"><a [routerLink]="['/pacientes']">Mis Pacientes</a></li>
+  </ul>
+</div>
+<br>
+<div class="container ">
+  <div class="row">
+    <h2 class="col-md-9">Mis Pacientes</h2>
+    <div class="col-md-3">
+      <button type="button" class="btn btn-block btn-primary " name="button" [routerLink]="['/nuevoPaciente']"><span class="glyphicon glyphicon-list-alt"></span> Nuevo Paciente</button>
+    </div>
+  </div>
+  <br>
+  <div class="alert alert-info"  *ngIf="barraEstado" role="alert">
+    <span class="text-primary"><strong>Aviso </strong>No hay pacientes registrados</span>
+  </div>
+  <div class="row item" *ngFor="let paciente of pacientes">
+    <div class="col-md-1">
+      <img src="../../assets/{{paciente.sexo}}.svg" class="img-responsive" alt="">
+    </div>
+    <h3 class="col-md-11"> <a [routerLink]="['/paciente',paciente._id]"> {{paciente.apellidos}} {{paciente.nombre}} <br> <small>Tel: {{paciente.telefono}} </small> </a></h3>
+  </div>
+</div>

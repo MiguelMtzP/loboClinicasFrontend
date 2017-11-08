@@ -1,0 +1,24 @@
+<app-header-profesor></app-header-profesor>
+
+<div class="container">
+  <hr>
+  <div class="alert alert-info"  *ngIf="barraEstado" role="alert">
+    <span class="text-primary"><strong>Aviso </strong> {{barraEstado}}</span>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-3 col-md-offset-9 text-right">
+      <button type="button" class="btn btn-primary " name="button" [routerLink]="['/profesor/crear-curso']"><span class="glyphicon glyphicon-bookmark"></span> Crear Curso</button>
+    </div>
+  </div>
+  <div class="jumbotron" *ngIf="!barraEstado">
+    <h1 class="text-center">Mis cursos</h1>
+    <br>
+    <div class="row item" *ngFor="let curso of cursos">
+      <div class="col-md-1">
+        <img src="../../assets/lecture.svg" class="img-responsive" alt="">
+      </div>
+      <h3 class="col-md-11"><a [routerLink]="['/profesor/detalle-curso',curso._id]"> {{curso.nombre}}</a></h3>
+    </div>
+  </div>
+</div>
