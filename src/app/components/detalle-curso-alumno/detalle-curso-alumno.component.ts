@@ -30,7 +30,7 @@ export class DetalleCursoAlumnoComponent implements OnInit {
     if(this.curso.password===this.contrasenaCurso){
       this._alumnoService.inscribirCurso(this.curso_id).subscribe(
         res=>{
-          console.log(res)
+          //console.log(res)
           this.getcurso();
         },
         err=>{
@@ -41,7 +41,7 @@ export class DetalleCursoAlumnoComponent implements OnInit {
     }else{
       this.errorcontra=true;
     }
-    console.log(this.contrasenaCurso);
+    //console.log(this.contrasenaCurso);
   }
   getcurso(){
     this._route.params.forEach((params:Params)=>{
@@ -49,7 +49,7 @@ export class DetalleCursoAlumnoComponent implements OnInit {
       this._alumnoService.getCurso(this.curso_id).subscribe(
         res=>{
           this.curso=res.curso;
-          console.log(res);
+          //console.log(res);
           if (res.inscrito=="no") {
             this.inscrito=false;
           } else {

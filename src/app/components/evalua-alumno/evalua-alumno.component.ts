@@ -19,6 +19,8 @@ export class EvaluaAlumnoComponent implements OnInit {
   public barraEstado:string;
   public curso_id:string;
   public buscar:string;
+  public nombreAlumnoSelected:string;
+  public idAlumnoSelected:string;
   constructor(
     private _profesorService:ProfesorService,
     private _router:Router,
@@ -48,21 +50,34 @@ export class EvaluaAlumnoComponent implements OnInit {
   }
   volverAlListado(){
     this.alumnoSelected=undefined;
-    console.log(this.alumnoSelected);
+    //console.log(this.alumnoSelected);
   }
   seleccionaAlumno(id:string, nombre:string){
-    console.log(id)
+    this.idAlumnoSelected=id;
+    this.nombreAlumnoSelected=nombre;
+    //console.log(id)
     this.alumnoSelected={};
-    this._profesorService.getConsultasPendientes(id,this.curso_id).subscribe(res=>{
-      //console.log(res);
+    this._profesorService.getConsultasRealizadasDelCurso(this.idAlumnoSelected,this.curso_id).subscribe(res=>{
+      ////console.log(res);
       this.alumnoSelected.consultas=res.consultas;
       this.alumnoSelected.nombre=nombre;
-      console.log(this.alumnoSelected);
+      //console.log(this.alumnoSelected);
     },
     err=>{
       console.log(err);
-    }
-  )
+    });
+  }
+
+  validaTratamiento(idConsulta:string,idTratamiento:string){
+    this._profesorService.validaTratamiento(idConsulta,idTratamiento).subscribe(
+      res=>{
+        this.seleccionaAlumno(this.idAlumnoSelected,this.nombreAlumnoSelected);
+      },
+      err=>{
+        console.log(err);
+
+      }
+    )
   }
 
 }

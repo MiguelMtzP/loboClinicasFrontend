@@ -4,6 +4,7 @@ import {Router,ActivatedRoute,Params} from '@angular/router';
 import {AlumnoService} from '../../services/alumno.service';
 import {Paciente} from '../../models/paciente';
 import {Cita} from '../../models/cita';
+
 @Component({
   selector: 'app-detalle-cita',
   templateUrl: './detalle-cita.component.html',
@@ -25,7 +26,7 @@ export class DetalleCitaComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router
   ) {
-    this.updatedCita= new Cita(null,"","","","");
+    this.updatedCita= new Cita("","","","","");
     this.titulo="Detalle de Cita";
     this.editar=false;
     this.eliminar=false;
@@ -69,7 +70,7 @@ export class DetalleCitaComponent implements OnInit {
   updateCita(){
     this._alumnoService.updateCita(this.updatedCita,this.cita._id).subscribe(
       res=>{
-        console.log(res);
+        //console.log(res);
 
         this.editar=false;
         this.getCita();
@@ -80,18 +81,18 @@ export class DetalleCitaComponent implements OnInit {
   deleteCita(){
     this._alumnoService.deleteCita(this.cita._id).subscribe(
       res=>{
-        console.log(res);
+        //console.log(res);
         this._router.navigate(['/agenda']);
       },
       err=>{
         console.error(err);
       });
-    console.log("delete cita")
+    //console.log("delete cita")
   }
   editaAction(){
     this.editar=true;
     this.titulo='Editar Cita';
-    //console.log(this.cita);
+    ////console.log(this.cita);
 
     this.updatedCita._id=this.cita._id;
     this.updatedCita.asunto=this.cita.asunto;

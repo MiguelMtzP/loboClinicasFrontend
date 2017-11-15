@@ -29,24 +29,24 @@ export class RegistroAlumnoComponent implements OnInit {
   uploadImage(fileInput:any){
     this.foto=<File>fileInput.target.files[0];
     if (this.foto == undefined ) {
-        console.log("no hay foto a cargar!")
+        //console.log("no hay foto a cargar!")
         this.imagen=false;
     } else {
       this.imagen=true;
-      console.log(this.foto);
+      //console.log(this.foto);
 
 
     }
   }
   onSubmit(){
-    console.log(this.alumno)
+    //console.log(this.alumno)
     this._loginService.singin(this.alumno).subscribe(
       res=>{
         this.token=res.token;
         this.alumno=res.usr;
         this._loginService.makeFotoRequest(this.foto,"jwt "+this.token).then(
           result=>{
-            console.log("foto actualizada");
+            //console.log("foto actualizada");
             localStorage.setItem("id",this.alumno._id);
             localStorage.setItem("token",this.token);
             localStorage.setItem("nombre",this.alumno.nombre);
@@ -55,12 +55,12 @@ export class RegistroAlumnoComponent implements OnInit {
             this._router.navigate(['/cursos']);
           },
           err=>{
-            console.log("marco error")
+            //console.log("marco error")
             console.log(err);
           }
         );
 
-        console.log(res);
+        //console.log(res);
       },err=>{
         console.log(err);
       }

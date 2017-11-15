@@ -28,7 +28,7 @@ export class AgregaCitaComponent implements OnInit {
     let d= new Date();
     this.barraEstado=false;
     //this.thisMoment=d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+"T"+d.getHours()+":"+d.getMinutes();
-    //console.log(this.thisMoment);
+    ////console.log(this.thisMoment);
   }
 
   onSubmit(){

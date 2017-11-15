@@ -27,7 +27,7 @@ export class AgregaConsultaComponent implements OnInit {
   onSubmit(){
     this._alumnoService.saveConsulta(this.consulta).subscribe(
       res=>{
-        //console.log(res);
+        ////console.log(res);
         this._router.navigate(['/paciente',this.id_paciente]);
       },
       err=>{
@@ -39,15 +39,15 @@ export class AgregaConsultaComponent implements OnInit {
   asignaNombreTrat(event:any,i:number){
     if (event.target.selectedIndex>0) {
       let indiceSeleccionado=event.target.selectedIndex-1
-      console.log(indiceSeleccionado+"-"+this.tratamientos[indiceSeleccionado].id_tratamiento.nombre);
+      //console.log(indiceSeleccionado+"-"+this.tratamientos[indiceSeleccionado].id_tratamiento.nombre);
       this.consulta.tratamientos[i].nombre=this.tratamientos[indiceSeleccionado].id_tratamiento.nombre;
-      console.log(this.tratamientos);
+      //console.log(this.tratamientos);
     } else {
       this.consulta.tratamientos[i].nombre="";
     }
   }
   removeTratamiento(i:number){
-    console.log("removiendo posision "+i)
+    //console.log("removiendo posision "+i)
     this.consulta.tratamientos.splice(i,1);
   }
   agregaTratamiento(){
@@ -64,7 +64,7 @@ export class AgregaConsultaComponent implements OnInit {
         }
       }
     }
-    console.log(this.tratamientos);
+    //console.log(this.tratamientos);
   }
   ngOnInit() {
 
@@ -74,7 +74,7 @@ export class AgregaConsultaComponent implements OnInit {
     this.consulta= new Consulta("","",this.id_paciente,"","",localStorage.getItem("id"),"",[{id_tratamiento:"",nombre:"",valido:false}]);
     this._alumnoService.getMisCursos().subscribe(
       res=>{
-        console.log(res);
+        //console.log(res);
         this.cursos=res.cursos;
       },
       err=>{

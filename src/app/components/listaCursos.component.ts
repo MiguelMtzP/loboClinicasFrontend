@@ -30,8 +30,8 @@ export class ListaCursosComponent implements OnInit{
       res=>{
         this.misCursos=res.cursos;
         if (res.cursos.length>0) {
-          console.log("mios");
-          console.log(this.misCursos);
+          //console.log("mios");
+          //console.log(this.misCursos);
         } else {
           this.barraMisCursos="No tienes cursos inscritos!";
         }
@@ -39,7 +39,7 @@ export class ListaCursosComponent implements OnInit{
       err=>{
         this.msjError= <any>err;
         if(this.msjError!= null){
-          console.log(this.msjError);
+          //console.log(this.msjError);
           alert('Error en la peticion');
         }
       }
@@ -49,8 +49,8 @@ export class ListaCursosComponent implements OnInit{
       res=>{
         this.cursos=res.cursos;
         if(res.cursos.length>0){
-          console.log("todos los cursos");
-          console.log(this.cursos);
+          //console.log("todos los cursos");
+          //console.log(this.cursos);
         }else{
           this.barraCursos="No hay cursos!";
         }
@@ -59,7 +59,7 @@ export class ListaCursosComponent implements OnInit{
       err=>{
         this.msjError= <any>err;
         if(this.msjError!= null){
-          console.log(this.msjError);
+          //console.log(this.msjError);
           alert('Error en la peticion');
         }
       }

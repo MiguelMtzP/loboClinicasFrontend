@@ -28,22 +28,22 @@ export class NuevoPacienteComponent implements OnInit{
   }
   ngOnInit(){
     this.titulo="Nuevo Paciente";
-    this.paciente= new Paciente("","","","","",{"nombre":"","apellidos":"","sexo":"","telefono":""},"","","",this.id,"","","");
+    this.paciente= new Paciente("","","",0,"",{"nombre":"","apellidos":"","sexo":"","telefono":""},"","","",this.id,"","","");
 
   }
   onSubmit(){
-    console.log(this.paciente);
+    //console.log(this.paciente);
     this._alumnoService.savePaciente(this.paciente).subscribe(
       res=>{
         this.paciente=res.paciente;
-        console.log(this.paciente);
+        //console.log(this.paciente);
         this._router.navigate(['/pacientes']);
 
       },
       err=>{
         this.msjError= <any>err;
         if(this.msjError!= null){
-          console.log(this.msjError);
+          //console.log(this.msjError);
           alert('Error en la peticion');
         }
       }

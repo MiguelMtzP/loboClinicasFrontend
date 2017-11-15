@@ -11,7 +11,7 @@ export class ProfesorService {
   public jwtAuth:string;
 
   constructor(private _http:Http){
-    this.url='http://localhost:3000/profesor/';
+    this.url='http://104.131.3.207:3000/profesor/';
     this.jwtAuth= "jwt "+localStorage.getItem("token");
   }
 
@@ -30,9 +30,14 @@ export class ProfesorService {
                      .map(res=>res.json());
   }
   //============= CONSULTAS ===================
-   getConsultasPendientes(idAlumno:string,idCurso:string){
+   getConsultasRealizadasDelCurso(idAlumno:string,idCurso:string){
      let headers= new Headers({'Authorization':this.jwtAuth});
-     return this._http.get(this.url+"getconsultas-pendientes/"+idAlumno+"/"+idCurso,{headers:headers}).
+     return this._http.get(this.url+"getconsultas-Realizadas-Curso/"+idAlumno+"/"+idCurso,{headers:headers}).
+                       map(res=>res.json());
+   }
+   validaTratamiento(idConsulta:string,idTratamiento:string){
+     let headers= new Headers({'Content-Type':'application/json','Authorization':this.jwtAuth});
+     return this._http.put(this.url+"valida-tratamiento/"+idConsulta+"/"+idTratamiento,{},{headers:headers}).
                        map(res=>res.json());
    }
   //============= CLINICAS ===================
@@ -57,6 +62,15 @@ export class ProfesorService {
     return this._http.get(this.url+"getcursos",{headers:headers}).
                       map(res=>res.json());
   }
+
+  getInscripcion(idCurso:string,idAlumno:string){
+
+
+    let headers= new Headers({'Authorization':this.jwtAuth});
+    return this._http.get(this.url+"getInscripcionAlumno/"+idCurso+"/"+idAlumno,{headers:headers}).
+                      map(res=>res.json());
+  }
+
   getAlumnos(id:string){
     let headers= new Headers({'Authorization':this.jwtAuth});
     return this._http.get(this.url+"getAlumnos/"+id,{headers:headers}).

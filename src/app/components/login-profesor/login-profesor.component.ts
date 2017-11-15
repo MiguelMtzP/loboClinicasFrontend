@@ -23,11 +23,11 @@ export class LoginProfesorComponent implements OnInit {
   ngOnInit() {
   }
   login(){
-    console.log("login");
+    //console.log("login");
     this._profesorService.login(this.usr,this.pass).subscribe(
       res=>{
-        console.log("res:");
-        console.log(res);
+        //console.log("res:");
+        //console.log(res);
         localStorage.setItem("id",res.usr._id);
         localStorage.setItem("token",res.token);
         localStorage.setItem("nombre",res.usr.nombre);
@@ -36,7 +36,7 @@ export class LoginProfesorComponent implements OnInit {
         this._router.navigate(['/profesor/cursos']);
       },
       err=>{
-        console.log("err:");
+        //console.log("err:");
         console.log(err);
         alert("Datos no validos!");
       }

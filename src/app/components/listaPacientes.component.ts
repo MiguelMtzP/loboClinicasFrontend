@@ -34,14 +34,14 @@ export class listaPacientesComponent implements OnInit{
           }
         return 0;
     });
-        console.log(this.pacientes);
+        //console.log(this.pacientes);
       },
       err=>{
         if (err.status==404) {
             this.barraEstado="No hay pacientes registrados.";
-            console.log("no hay pacientes")
+            //console.log("no hay pacientes")
         }else{
-          console.log("error:")
+          //console.log("error:")
           alert('Error en la peticion');
         }
       }

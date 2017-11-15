@@ -3,7 +3,7 @@ export class Paciente{
     public _id:string,
     public nombre:string,
     public apellidos:string,
-    public edad:string,
+    public edad:number,
     public sexo:string,
     public datos_tutor:{
       nombre:string,

@@ -20,7 +20,7 @@
     <div class="row">
       <div class="item col-sm-4 col-md-3" *ngFor="let alumno of alumnosCopia">
         <div class="thumbnail" (click)="seleccionaAlumno(alumno.id_alumno._id,alumno.id_alumno.nombre+' '+alumno.id_alumno.apellidos)">
-          <img class="img-circle" src="http://localhost:3000/alumno/getFotoPerfil/{{alumno.id_alumno._id}}" alt="...">
+          <img class="img-circle" src="http://104.131.3.207:3000/alumno/getFotoPerfil/{{alumno.id_alumno._id}}" alt="...">
           <div class="caption">
             <h3>{{alumno.id_alumno.apellidos}} {{alumno.id_alumno.nombre}}</h3>
             <span>{{alumno.id_alumno.correo}}</span>
@@ -39,7 +39,7 @@
   <button type="button" name="button" class="btn btn-link" (click)="volverAlListado()"> <span class="glyphicon glyphicon-menu-left" ></span> Volver al listado de alumnos</button>
   <div class="jumbotron">
     <h1 class="text-center">{{alumnoSelected.nombre}}</h1>
-    <h2>Tratamientos pendientes</h2>
+    <h2>Tratamientos Realizados</h2>
     <table class="table tabla table-hover">
       <tr class="info">
         <th>Tratamiento</th><th>Fecha</th><th>Estado</th><th>Revisar</th>
@@ -57,18 +57,7 @@
             Pendiente de revisión
           </span>
         </td>
-        <td *ngIf="!consulta.tratamientos.valido" class="text-center"><button class="btn btn-primary" name="button"><span class="glyphicon glyphicon-ok"></span> Validar</button></td>
-      </tr>
-      <tr>
-
-        <div class="row">
-          <div class="col.md-3">
-            <p>nombre</p>
-          </div>
-          <div class="col-md-3">
-            <p>mario rosas</p>
-          </div>
-        </div>
+        <td *ngIf="!consulta.tratamientos.valido" class="text-center"><button class="btn btn-primary" (click)="validaTratamiento(consulta._id,consulta.tratamientos._id)" name="button"><span class="glyphicon glyphicon-ok"></span> Validar</button></td>
       </tr>
     </table>
   </div>

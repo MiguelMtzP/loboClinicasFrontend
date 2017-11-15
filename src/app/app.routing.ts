@@ -30,7 +30,7 @@ const appRoutes: Routes=[
   {path:'profesor/evaluar-alumno/:id',component:EvaluaAlumnoComponent},
   {path:'profesor/crear-curso',component:CrearCursoComponent},
   {path:'profesor/detalle-curso/:id',component:DetalleCursoProfesorComponent},
-  {path:'profesor/detalle-alumno/:id',component:DetalleAlumnoComponent},
+  {path:'profesor/detalle-alumno/:idAlumno/:idCurso',component:DetalleAlumnoComponent},
   {path:'registro-profesor',component:RegistroProfesorComponent},
 
 

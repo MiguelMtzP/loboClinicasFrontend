@@ -1,9 +1,58 @@
 <app-header-profesor></app-header-profesor>
-<hr><br>
+<br>
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <button type="button" [routerLink]="['/profesor/cursos']" name="button" class="btn btn-link"><span class="glyphicon glyphicon-menu-left"></span> Volver al listado de cursos</button>
+      <button type="button" [routerLink]="['/profesor/detalle-curso',id_curso]" name="button" class="btn btn-link"><span class="glyphicon glyphicon-menu-left"></span> Volver al detalle del curso</button>
     </div>
+  </div>
+
+  <div class="jumbotron">
+    <h2 class="">Datos de contacto</h2>
+    <br>
+    <div class="panel panel-primary" *ngIf="inscripcion" >
+      <div class="panel-body">
+        <div class="row" >
+          <h4 class="col-md-4 col-md-offset-1 etiqueta">Nombre del Alumno:</h4>
+          <p class="col-md-5">{{inscripcion.id_alumno.nombre}} {{inscripcion.id_alumno.apellidos}}</p>
+        </div>
+        <div class="row" >
+          <h4 class="col-md-4 col-md-offset-1 etiqueta">Correo electronico:</h4>
+          <p class="col-md-5">{{inscripcion.id_alumno.correo}}</p>
+        </div>
+        <div class="row" >
+          <h4 class="col-md-4 col-md-offset-1 etiqueta">Matricula:</h4>
+          <p class="col-md-5">{{inscripcion.id_alumno.matricula}}</p>
+        </div>
+
+      </div>
+    </div>
+
+    <hr>
+    <h2 class="">Tratamientos</h2>
+    <br>
+    <div *ngIf="inscripcion&&curso" class="panel panel-primary" >
+      <div class="panel-body">
+        <table class="table table-hover">
+          <tr class="info">
+            <th>Tratamiento</th>
+            <th>Requeridos</th>
+            <th>Realizados</th>
+          </tr>
+          <tr *ngFor="let tratamiento of curso.id_clinica.tratamientos; let i = index ">
+            <td>{{tratamiento.id_tratamiento.nombre}}</td>
+            <td>{{tratamiento.cantidad}}</td>
+            <td>{{tratamiento.cantidad - inscripcion.tratamientos[i].cantidad}}</td>
+          </tr>
+        </table>
+
+      </div>
+  </div>
+
+  <div class="row">
+    <h2 class="col-md-7">Porcentaje del curso completado: </h2>
+    <h1 class="col-md-3" *ngIf="average<50"><span class=" text-danger"> {{average|number:'2.1-2'}}% </span></h1>
+    <h1 class="col-md-3" *ngIf="average>50&&average<85"> <span class=" text-warning"> {{average|number:'2.1-2'}}% </span></h1>
+    <h1 class="col-md-3" *ngIf="average>85"> <span class=" text-success"> {{average|number:'2.1-2'}}% </span></h1>
   </div>
 </div>

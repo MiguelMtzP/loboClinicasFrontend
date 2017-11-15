@@ -24,7 +24,7 @@ export class HeaderProfesorComponent {
   }
   cerrarsesion(){
     localStorage.clear();
-    console.log("sesion Terminada");
+    //console.log("sesion Terminada");
     this._router.navigate(["profesor"]);
   }
 }

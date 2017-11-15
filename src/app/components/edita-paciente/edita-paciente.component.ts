@@ -43,7 +43,7 @@ export class EditaPacienteComponent implements OnInit {
 
     this._alumnoService.updatePaciente(this.paciente,this.id_paciente).subscribe(
       res=>{
-        console.log(res);
+        //console.log(res);
         this._router.navigate(['/paciente/',this.id_paciente]);
       },err=>{
         if(err!= null){

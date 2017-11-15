@@ -13,7 +13,7 @@ export class AlumnoService{
   public url:string;
   public jwtAuth:string;
   constructor(private _http:Http){
-    this.url='http://localhost:3000/alumno/';
+    this.url='http://104.131.3.207:3000/alumno/';
     this.jwtAuth= "jwt "+localStorage.getItem("token");
   }
 

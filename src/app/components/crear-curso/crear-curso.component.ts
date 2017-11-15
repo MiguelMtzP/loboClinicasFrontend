@@ -29,7 +29,7 @@ export class CrearCursoComponent implements OnInit {
     this._profesorService.getClinicas().subscribe(
       res=>{
         this.clinicas=res.clinicas;
-        console.log(res);
+        //console.log(res);
       },
       err=>{
         console.log(err);
@@ -41,7 +41,7 @@ export class CrearCursoComponent implements OnInit {
     this._profesorService.saveCurso(this.curso).subscribe(
       res=>{
         this.curso=res.curso;
-        console.log(res);
+        //console.log(res);
         this._router.navigate(['profesor/cursos']);
       },
       err=>{

@@ -29,7 +29,7 @@ export class DetalleCursoProfesorComponent implements OnInit {
       this._profesorService.getcurso(this.curso_id).subscribe(
         res=>{
           this.curso=res.curso;
-          console.log(this.curso);
+          //console.log(this.curso);
         },
         err=>{
           console.log(err);
@@ -38,7 +38,7 @@ export class DetalleCursoProfesorComponent implements OnInit {
       this._profesorService.getAlumnos(this.curso_id).subscribe(
         res=>{
           this.alumnos=res.alumnos;
-          console.log(this.alumnos);
+          //console.log(this.alumnos);
         },
         err=>{
           console.log(err)

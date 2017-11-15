@@ -9,7 +9,7 @@ export class LoginService{
   public url:string;
 
   constructor(private _http:Http){
-    this.url='http://localhost:3000/';
+    this.url='http://104.131.3.207:3000/';
   }
 
   login(usr:String, pass:String ){

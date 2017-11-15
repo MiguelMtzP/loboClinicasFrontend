@@ -28,7 +28,7 @@ export class DetallePacienteComponent implements OnInit{
   deletePaciente(){
     this._alumnoService.deletePaciente(this.paciente_id).subscribe(
       res=>{
-        console.log(res);
+        //console.log(res);
         this._router.navigate(['/pacientes']);
       },
       err=>{
@@ -46,14 +46,14 @@ export class DetallePacienteComponent implements OnInit{
       this._alumnoService.getPaciente(this.paciente_id).subscribe(
         res=>{
           this.paciente=res.paciente;
-          console.log(res);
+          //console.log(res);
           if(!this.paciente){
             this._router.navigate(['/pacientes']);
           }
           this._alumnoService.getConsultas(this.paciente_id).subscribe(
             res=>{
               this.consultas=res.consultas;
-              console.log(this.consultas)
+              //console.log(this.consultas)
             },
             err=>{
               if(err!= null){

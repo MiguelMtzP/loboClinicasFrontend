@@ -55,9 +55,9 @@
     <h2 class="">Alumnos</h2>
     <br>
     <div class="row">
-      <div class="item col-sm-4 col-md-3" *ngFor="let alumno of alumnos" [routerLink]="['/profesor/detalle-alumno',alumno.id_alumno._id]">
+      <div class="item col-sm-4 col-md-3" *ngFor="let alumno of alumnos" [routerLink]="['/profesor/detalle-alumno',alumno.id_alumno._id,alumno.id_curso]">
         <div class="thumbnail">
-          <img class="img-circle" src="http://localhost:3000/alumno/getFotoPerfil/{{alumno.id_alumno._id}}" alt="...">
+          <img class="img-circle" src="http://104.131.3.207:3000/alumno/getFotoPerfil/{{alumno.id_alumno._id}}" alt="...">
           <div class="caption">
             <h3>{{alumno.id_alumno.apellidos}} {{alumno.id_alumno.nombre}}</h3>
             <span>{{alumno.id_alumno.correo}}</span>

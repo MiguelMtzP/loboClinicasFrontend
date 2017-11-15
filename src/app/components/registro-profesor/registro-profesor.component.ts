@@ -23,10 +23,10 @@ export class RegistroProfesorComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log("submit");
+    //console.log("submit");
     this._profesorService.singin(this.profesor).subscribe(
       res=>{
-        console.log(res);
+        //console.log(res);
         localStorage.setItem("id",res.usr._id);
         localStorage.setItem("token",res.token);
         localStorage.setItem("nombre",res.usr.nombre);

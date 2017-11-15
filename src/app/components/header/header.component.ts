@@ -23,7 +23,7 @@ export class HeaderComponent{
   }
   cerrarsesion(){
     localStorage.clear();
-    console.log("sesion Terminada");
+    //console.log("sesion Terminada");
     this._router.navigate(["/"]);
   }
 }

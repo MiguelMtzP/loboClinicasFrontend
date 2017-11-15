@@ -26,16 +26,16 @@ export class UserProfileComponent implements OnInit {
    uploadImage(fileInput:any){
      this.foto=<File>fileInput.target.files[0];
      if (this.foto == undefined ) {
-         console.log("no hay foto a cargar!")
+         //console.log("no hay foto a cargar!")
      } else {
-       console.log(this.foto);
+       //console.log(this.foto);
        this._alumnoService.makeFotoRequest(this.foto).then(
          result=>{
-           console.log("foto actualizada");
+           //console.log("foto actualizada");
            window.location.reload();
          },
          err=>{
-           console.log("marco error")
+           //console.log("marco error")
            console.log(err);
          }
        );
@@ -44,7 +44,7 @@ export class UserProfileComponent implements OnInit {
 
   getimageurl(id:string){
     this.urlImagen="";
-    this.urlImagen="http://localhost:3000/alumno/getFotoPerfil/"+id;
+    this.urlImagen="http://104.131.3.207:3000/alumno/getFotoPerfil/"+id;
   }
 
   ngOnInit() {
@@ -54,7 +54,7 @@ export class UserProfileComponent implements OnInit {
     this._alumnoService.getPerfil().subscribe(
       res=>{
         this.alumno=res.user;
-        console.log(this.alumno);
+        //console.log(this.alumno);
         this.getimageurl(res.user._id);
       },
       err=>{
@@ -70,7 +70,7 @@ export class UserProfileComponent implements OnInit {
         localStorage.setItem("nombre",this.alumno.nombre);
         localStorage.setItem("apellidos",this.alumno.apellidos);
         localStorage.setItem("matricula",this.alumno.matricula);
-        console.log("Perfil Actualizado");
+        //console.log("Perfil Actualizado");
       },
       err=>{
         console.log(err)
@@ -80,7 +80,7 @@ export class UserProfileComponent implements OnInit {
 
   cerrarsesion(){
     localStorage.clear();
-    console.log("sesion Terminada");
+    //console.log("sesion Terminada");
     this._router.navigate(["/"]);
   }
 

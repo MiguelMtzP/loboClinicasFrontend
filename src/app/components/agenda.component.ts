@@ -40,12 +40,12 @@ export class AgendaComponent implements OnInit{
           }
         return 0;
     });;
-        console.log(this.citas);
+        //console.log(this.citas);
       },
       err=>{
         if (err.status==404) {
             this.barraEstado="No hay citas pendientes.";
-            console.log("no hay citas")
+            //console.log("no hay citas")
         }else{
           console.error(err)
           alert('Error en la peticionXD');

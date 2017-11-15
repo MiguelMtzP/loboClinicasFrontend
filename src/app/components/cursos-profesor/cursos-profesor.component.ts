@@ -22,7 +22,7 @@ export class CursosProfesorComponent implements OnInit {
   ngOnInit() {
     this._profesorService.getcursos().subscribe(
       res=>{
-        console.log(res);
+        //console.log(res);
         this.cursos=res.cursos;
       },
       err=>{
